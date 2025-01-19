@@ -4,11 +4,38 @@ import traceback
 import requests
 import concurrent.futures
 from lxml import html
-from bs4 import BeautifulSoup
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import time
 import sys
+import pygame  # Import pygame for audio
+
+# Initialize pygame mixer for sound
+pygame.mixer.init()
+
+# Debugging: Print to check initialization
+print("Pygame initialized:", pygame.mixer.get_init())
+
+# Check the current working directory to ensure it's correct
+print("Current working directory:", os.getcwd())
+
+# Define the path to the beep sound
+beep_sound_path = os.path.join(os.getcwd(), "beep.wav")
+
+# Check if the beep sound file exists in the directory
+if os.path.exists(beep_sound_path):
+    beep_sound = pygame.mixer.Sound(beep_sound_path)
+    print("Beep sound loaded successfully.")
+else:
+    print("Error: beep.wav not found in the current directory.")
+
+# Function to play beep sound
+def play_beep():
+    if 'beep_sound' in globals():  # Check if beep_sound is loaded
+        beep_sound.play()
+        print("Beep sound played.")
+    else:
+        print("Beep sound is not loaded properly.")
 
 LOGO = """
                          _____ _   _  ___   _   _  ____________  ___  _____ _____ 
@@ -82,38 +109,8 @@ def get_wallet_info_blockchain(addr, checked_addresses):
         return "Error", "Error", "Error", addr, "blockchain.com"
 
 
-def get_wallet_info_new_provider(addr, checked_addresses):
-    if addr in checked_addresses:
-        return "Error", "Error", "Error", addr, "new_provider"
-    
-    checked_addresses.add(addr)
-
-    try:
-        urlblock = f"https://bitcoin.atomicwallet.io/address/{addr}"
-        response_block = requests.get(urlblock)
-        byte_string = response_block.content
-        source_code = html.fromstring(byte_string)
-
-        xpatch_balance = '/html/body/main/div/div/div[1]/h4/div/span'
-        xpatch_trx = '/html/body/main/div/table/tbody/tr[5]/td[2]'
-        xpatch_days = '/html/body/main/div/div[3]/div[1]/div[1]/div[2]/span/span'
-
-        balance_elements = source_code.xpath(xpatch_balance)
-        trx_elements = source_code.xpath(xpatch_trx)
-        days_elements = source_code.xpath(xpatch_days)
-
-        balance = balance_elements[0].text_content().strip() if balance_elements else "Not found"
-        trx = trx_elements[0].text_content().strip() if trx_elements else "Not found"
-        days = days_elements[0].text_content().strip() if days_elements else "No information"
-
-        return balance, trx, days, addr, "new_provider"
-
-    except Exception:
-        return "Error", "Error", "Error", addr, "new_provider"
-
-
 def get_wallet_info_with_timeout(addr, checked_addresses, provider_index):
-    providers = [get_wallet_info_atomic, get_wallet_info_blockchain, get_wallet_info_new_provider]
+    providers = [get_wallet_info_atomic, get_wallet_info_blockchain]
     provider = providers[provider_index % len(providers)]
     timeout = 5
     start_time = time.time()
@@ -162,12 +159,13 @@ def process_wallets_from_file(file_path):
             except ValueError:
                 balance_value = 0
 
-            # If balance > 0, immediately write to the file
+            # If balance > 0, immediately write to the file and play the beep sound
             if balance_value > 0:
                 with open('Found-Balance.txt', 'a') as balance_file:
                     balance_file.write(f"Provider: {provider}\nBitcoin Address: {address}\nBalance: {balance}\n\n")
                     balance_file.flush()
-                sys.stdout.write(f"\rFound! | Address: {address} | Balance: {balance} BTC\n")
+                play_beep()  # Play the beep sound when found
+                sys.stdout.write(f"\rFound! Provider: {provider} | Address: {address} | Balance: {balance} BTC\n")
                 sys.stdout.flush()
 
             # If transactions > 0, immediately write to the file
@@ -175,7 +173,8 @@ def process_wallets_from_file(file_path):
                 with open('Found-Trx.txt', 'a') as trx_file:
                     trx_file.write(f"Provider: {provider}\nBitcoin Address: {address}\nTransactions: {trx}\nLast Transaction Days: {days}\n\n")
                     trx_file.flush()
-                sys.stdout.write(f"\rFound! | Address: {address} | Transactions: {trx}\n")
+                play_beep()  # Play the beep sound when found
+                sys.stdout.write(f"\rFound! Provider: {provider} | Address: {address} | Transactions: {trx}\n")
                 sys.stdout.flush()
 
 
