@@ -79,3 +79,5 @@ Notes:
     Make sure you have the necessary permissions to write files in the Keyhunt folder.
 
 By following these instructions, you should be able to use the script to check the addresses Keyhunt finds and save the data accordingly.
+
+Donate (BTC): 3EkQMZpLCyFHD9BD2jSH9jpwBsTmKbCpne
