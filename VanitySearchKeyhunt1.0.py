@@ -25,17 +25,17 @@ beep_sound_path = os.path.join(os.getcwd(), "beep.wav")
 # Check if the beep sound file exists in the directory
 if os.path.exists(beep_sound_path):
     beep_sound = pygame.mixer.Sound(beep_sound_path)
-    print("Beep sound loaded successfully.")
+    #print("Beep sound loaded successfully.")
 else:
-    print("Error: beep.wav not found in the current directory.")
+    #print("Error: beep.wav not found in the current directory.")
 
 # Function to play beep sound
 def play_beep():
     if 'beep_sound' in globals():  # Check if beep_sound is loaded
         beep_sound.play()
-        print("Beep sound played.")
+        #print("Beep sound played.")
     else:
-        print("Beep sound is not loaded properly.")
+        #print("Beep sound is not loaded properly.")
 
 LOGO = """
                          _____ _   _  ___   _   _  ____________  ___  _____ _____ 
