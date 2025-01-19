@@ -1,4 +1,6 @@
 requests
 web3
-
-
+pygame
+lxml
+watchdog
+bs4
