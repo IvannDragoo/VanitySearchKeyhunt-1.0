@@ -34,8 +34,8 @@ Install all the required dependencies (if not done already):
 
 2. Add VanitySearchKeyhunt 1.0
 
-    Download the VanitySearchKeyhunt1.0.py script.
-    Copy the script into the Keyhunt directory, where the keyhunt.py file is located.
+    Download the VanitySearchKeyhunt1.0.py and requirements.txt.
+    Copy the script and requirements.txt into the Keyhunt directory, where the keyhunt file is located.
 
 3. Install Dependencies
 
@@ -49,7 +49,8 @@ Now, you can run the script:
 
 python VanitySearchKeyhunt1.0.py
 
-now run keyhunt with the line for example with the vanity (-v 13vs7F) its search Wallets its begin with 13vs7F..... :
+now open a nsecond console in the keyhunt folder and run keyhunt with the line for example
+with the vanity (-v 13vs7F) its search Wallets its begin with 13vs7F..... :
 
 
     ./keyhunt -m vanity -l compress -R -r 1000000000000000000000000000000000000000000000000000000000000000:fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141 -e -s 10 -q -v 13vs7F
