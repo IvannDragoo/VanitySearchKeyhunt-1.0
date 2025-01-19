@@ -19,7 +19,8 @@ First, you need to download and install Keyhunt. Follow these steps:
 
     Go to the Keyhunt GitHub repository.
 
-    Click on "Code" and download the repository as a ZIP file, or clone it directly:
+    Click on "Code" and download the repository as a ZIP file, or clone it directly on :
+
 
 git clone https://github.com/albertobsd/keyhunt.git
 
@@ -29,7 +30,7 @@ cd keyhunt
 
 Install all the required dependencies (if not done already):
 
-    pip install -r requirements.txt
+    make
 
 2. Add VanitySearchKeyhunt 1.0
 
@@ -48,6 +49,12 @@ Now, you can run the script:
 
 python VanitySearchKeyhunt1.0.py
 
+now run keyhunt with the line for example with the vanity (-v 13vs7F) its search Wallets its begin with 13vs7F..... :
+
+
+    ./keyhunt -m vanity -l compress -R -r 1000000000000000000000000000000000000000000000000000000000000000:fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141 -e -s 10 -q -v 13vs7F
+
+    
 How It Works
 
     VanitySearchKeyhunt1.0.py uses Keyhunt to search for vanity addresses.
@@ -78,6 +85,7 @@ Requirements
     The modules listed in requirements.txt
 
 Example requirements.txt (optional):
+
 
 You can create a requirements.txt file for the necessary dependencies. Here’s an example:
 
