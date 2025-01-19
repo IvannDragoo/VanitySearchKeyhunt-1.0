@@ -1,13 +1,13 @@
                            _____ _   _  ___   _   _  ____________  ___  _____ _____ 
-                          |_   _| | | |/ _ \ | \ | | |  _  \ ___ \/ _ \|  __ \  _  |
-                            | | | | | / /_\ \|  \| | | | | | |_/ / /_\ \ |  \/ | | |
-                            | | | | | |  _  || . ` | | | | |    /|  _  | | __| | | |
-                           _| |_\ \_/ / | | || |\  | | |/ /| |\ \| | | | |_\ \ \_/ /
-                           \___/ \___/\_| |_/\_| \_/ |___/ \_| \_\_| |_/\____/\___/
+                            |_   _| | | |/ _ \ | \ | | |  _  \ ___ \/ _ \|  __ \  _  |
+                              | | | | | / /_\ \|  \| | | | | | |_/ / /_\ \ |  \/ | | |
+                              | | | | | |  _  || . ` | | | | |    /|  _  | | __| | | |
+                             _| |_\ \_/ / | | || |\  | | |/ /| |\ \| | | | |_\ \ \_/ /
+                             \___/ \___/\_| |_/\_| \_/ |___/ \_| \_\_| |_/\____/\___/
 
-        Give me a Feedback on Github and when you want send a Donate for my work. Thanks and Good Luck
+          Give me a Feedback on Github and when you want send a Donate for my work. Thanks and Good Luck
         
-                                  Github: https://github.com/IvannDragoo
+                                      Github: https://github.com/IvannDragoo
                                   Donate (BTC):3EkQMZpLCyFHD9BD2jSH9jpwBsTmKbCpne
 
 
