@@ -164,7 +164,7 @@ def process_wallets_from_file(file_path):
 
             # If balance > 0, immediately write to the file
             if balance_value > 0:
-                with open('/home/chiko/Schreibtisch/Found-Balance.txt', 'a') as balance_file:
+                with open('Found-Balance.txt', 'a') as balance_file:
                     balance_file.write(f"Provider: {provider}\nBitcoin Address: {address}\nBalance: {balance}\n\n")
                     balance_file.flush()
                 sys.stdout.write(f"\rFound! | Address: {address} | Balance: {balance} BTC\n")
@@ -172,7 +172,7 @@ def process_wallets_from_file(file_path):
 
             # If transactions > 0, immediately write to the file
             if trx.isdigit() and int(trx) > 0:
-                with open('/home/chiko/Schreibtisch/Found-Trx.txt', 'a') as trx_file:
+                with open('Found-Trx.txt', 'a') as trx_file:
                     trx_file.write(f"Provider: {provider}\nBitcoin Address: {address}\nTransactions: {trx}\nLast Transaction Days: {days}\n\n")
                     trx_file.flush()
                 sys.stdout.write(f"\rFound! | Address: {address} | Transactions: {trx}\n")
@@ -202,5 +202,5 @@ def start_file_watcher(file_path):
 
 
 if __name__ == "__main__":
-    file_path = '/home/chiko/Bitcoin/keyhunt/VANITYKEYFOUND.txt'
+    file_path = 'VANITYKEYFOUND.txt'
     start_file_watcher(file_path)
