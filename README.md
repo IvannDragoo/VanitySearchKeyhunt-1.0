@@ -47,14 +47,14 @@ Install all the required dependencies (if not done already):
 
     Open a console/terminal in the Keyhunt folder and install the necessary modules for the script:
 
-    pip install -r requirements.txt
+        pip install -r requirements.txt
     change in script your Path to VANITYFOUNDKEY.txt in the keyhunt folder.
 
 5. Run the Script
 
 Now, you can run the script:
 
-python VanitySearchKeyhunt1.0.py
+    python VanitySearchKeyhunt1.0.py
 
 now open a nsecond console in the keyhunt folder and run keyhunt with the line for example
 with the vanity (-v 13vs7F) its search Wallets its begin with 13vs7F..... :
@@ -97,8 +97,12 @@ Example requirements.txt (optional):
 
 You can create a requirements.txt file for the necessary dependencies. Here’s an example:
 
-requests
-web3
+    pip install requests
+    pip install web3
+    pip install pygame
+    pip install lxml
+    pip install watchdog
+    pip install bs4
 
 Notes:
 
