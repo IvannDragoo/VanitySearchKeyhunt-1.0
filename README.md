@@ -42,8 +42,9 @@ Install all the required dependencies (if not done already):
     Open a console/terminal in the Keyhunt folder and install the necessary modules for the script:
 
     pip install -r requirements.txt
+    change in script your Path to VANITYFOUNDKEY.txt in the keyhunt folder.
 
-4. Run the Script
+5. Run the Script
 
 Now, you can run the script:
 
