@@ -25,17 +25,17 @@ beep_sound_path = os.path.join(os.getcwd(), "beep.wav")
 # Check if the beep sound file exists in the directory
 if os.path.exists(beep_sound_path):
     beep_sound = pygame.mixer.Sound(beep_sound_path)
-    #print("Beep sound loaded successfully.")
+    print("Beep sound loaded successfully.")
 else:
-    #print("Error: beep.wav not found in the current directory.")
+    print("Error: beep.wav not found in the current directory.")
 
 # Function to play beep sound
 def play_beep():
     if 'beep_sound' in globals():  # Check if beep_sound is loaded
         beep_sound.play()
-        #print("Beep sound played.")
+        print("Beep sound played.")
     else:
-        #print("Beep sound is not loaded properly.")
+        print("Beep sound is not loaded properly.")
 
 LOGO = """
                          _____ _   _  ___   _   _  ____________  ___  _____ _____ 
@@ -116,6 +116,10 @@ def get_wallet_info_with_timeout(addr, checked_addresses, provider_index):
     start_time = time.time()
 
     while time.time() - start_time < timeout:
+        # Print the address being tested
+        sys.stdout.write(f"\rTesting address: {addr} ")
+        sys.stdout.flush()
+
         balance, trx, days, address, provider_name = provider(addr, checked_addresses)
         if balance != "Not found" and trx != "Not found" and balance != "Error" and trx != "Error":
             return balance, trx, days, address, provider_name
@@ -200,6 +204,14 @@ def start_file_watcher(file_path):
     observer.join()
 
 
-if __name__ == "__main__":
-    file_path = 'VANITYKEYFOUND.txt'
+def initial_test_and_wait(file_path):
+    # Test the existing addresses if there are any
+    process_wallets_from_file(file_path)
+    
+    # After processing the initial addresses, wait for new entries
     start_file_watcher(file_path)
+
+
+if __name__ == "__main__":
+    file_path = '/path/to/keyhunt/VANITYKEYFOUND.txt'
+    initial_test_and_wait(file_path)
